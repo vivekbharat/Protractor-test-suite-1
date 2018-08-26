@@ -1,31 +1,29 @@
 describe("Protractor Element Demo", function() {
-  //
+  it("Locates a an Element Locator", function() {
+    // browser.waitForAngularEnabled(false);
+    // browser.get("http://www.google.com");
 
-  // it("Locates a an Element Locator", function() {
-  //   // browser.waitForAngularEnabled(false);
-  //   // browser.get("http://www.google.com");
+    browser.get("http://juliemr.github.io/protractor-demo/");
+    element(by.model("first")).sendKeys("3");
+    element(by.model("second")).sendKeys("5");
+    element(by.id("gobutton")).click();
+    expect(element(by.css("h2[class='ng-binding']")).getText()).toBe("8");
+  });
 
-  //   browser.get("http://juliemr.github.io/protractor-demo/");
-  //   element(by.model("first")).sendKeys("3");
-  //   element(by.model("second")).sendKeys("5");
-  //   element(by.id("gobutton")).click();
-  //   expect(element(by.css("h2[class='ng-binding']")).getText()).toBe("8");
-  // });
-
-  // it("test chain loactor", () => {
-  //   browser.get("http://juliemr.github.com/protractor-demo");
-  //   // Repeater, Chain Locator and css for identical tags
-  //   element(by.model("first")).sendKeys("3");
-  //   element(by.model("second")).sendKeys("5");
-  //   element(by.id("gobutton")).click();
-  //   expect(
-  //     element(by.repeater("result in memory"))
-  //       .element(by.css("td:nth-child(3)"))
-  //       .getText()
-  //   ).toBe("8");
-  // });
+  it("test chain loactor", () => {
+    browser.get("http://juliemr.github.com/protractor-demo");
+    // Repeater, Chain Locator and css for identical tags
+    element(by.model("first")).sendKeys("3");
+    element(by.model("second")).sendKeys("5");
+    element(by.id("gobutton")).click();
+    expect(
+      element(by.repeater("result in memory"))
+        .element(by.css("td:nth-child(3)"))
+        .getText()
+    ).toBe("8");
+  });
   // .then(val => console.log(val));
-  //
+
   eval = (a, b, operation) => {
     element(by.model("first")).sendKeys(a);
 
@@ -40,28 +38,28 @@ describe("Protractor Element Demo", function() {
     element(by.id("gobutton")).click();
   };
 
-  // it("test all locator", () => {
-  //   browser.get("http://juliemr.github.com/protractor-demo");
-  //   // Repeater, Chain Locator and css for identical tags
-  //   eval("3", "5");
-  //   eval("2", "1");
-  //   eval("-19", "10");
+  it("test all locator", () => {
+    browser.get("http://juliemr.github.com/protractor-demo");
+    // Repeater, Chain Locator and css for identical tags
+    eval("3", "5");
+    eval("2", "1");
+    eval("-19", "10");
 
-  //   let arr = [];
-  //   element.all(by.repeater("result in memory")).each(item => {
-  //     item
-  //       .element(by.css("td:nth-child(3)"))
-  //       .getText()
-  //       .then(val => {
-  //         arr.unshift(val);
-  //         console.log(arr);
-  //       });
-  //   });
-  //   element
-  //     .all(by.repeater("result in memory"))
-  //     .count()
-  //     .then(val => console.log(val));
-  // });
+    let arr = [];
+    element.all(by.repeater("result in memory")).each(item => {
+      item
+        .element(by.css("td:nth-child(3)"))
+        .getText()
+        .then(val => {
+          arr.unshift(val);
+          console.log(arr);
+        });
+    });
+    element
+      .all(by.repeater("result in memory"))
+      .count()
+      .then(val => console.log(val));
+  });
 
   //
 
